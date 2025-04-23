@@ -3,7 +3,7 @@ import pandas as pd
 
 def pobierzZamowienie():
     
-    print('Podaj dane zamówienia:\n')
+    print('\nPodaj dane zamówienia:\n')
 
     while True:
         try:

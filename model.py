@@ -3,7 +3,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.linear_model import Ridge
 from sklearn.metrics import mean_squared_error
-from math import sqrt
+from math import sqrt, ceil
 
 
 def przewiduj(df_z, rl, d, r, mse_rl, mse_d, mse_r):
@@ -13,13 +13,13 @@ def przewiduj(df_z, rl, d, r, mse_rl, mse_d, mse_r):
     d_p = d.predict(df_z)
     r_p = r.predict(df_z)
 
-    e_rl = sqrt(mse_rl)
-    e_d = sqrt(mse_d)
-    e_r = sqrt(mse_r)
+    e_rl = ceil(sqrt(mse_rl))
+    e_d = ceil(sqrt(mse_d))
+    e_r = ceil(sqrt(mse_r))
 
-    print(f'Czas dostawy przewidywany przez model regresji liniowej: {rl_p[0][0]:.0f} +/- {e_rl:.0f} min')
-    print(f'Czas dostawy przewidywany przez model drzewa regresyjnego: {d_p[0]:.0f} +/- {e_d:.0f} min')
-    print(f'Czas dostawy przewidywany przez model Ridge: {r_p[0]:.0f} +/- {e_r:.0f} min')
+    print(f'Czas dostawy przewidywany przez model regresji liniowej: {ceil(rl_p[0])} +/- {e_rl} min')
+    print(f'Czas dostawy przewidywany przez model drzewa regresyjnego: {ceil(d_p[0])} +/- {e_d} min')
+    print(f'Czas dostawy przewidywany przez model Ridge: {ceil(r_p[0])} +/- {e_r} min')
 
 def podzial(x, y):
     
